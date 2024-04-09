@@ -16,10 +16,11 @@ def create_folder(args: list) -> str:
     return path
 
 
-def create_file(args: str, path: str = "") -> None:
+def create_file(args: str) -> None:
     if "-f" not in args:
         return
 
+    path = create_folder(args)
     file_name = os.path.join(path, args[args.index("-f") + 1])
     open_mode = "a" if os.path.exists(file_name) else "w"
 
@@ -39,5 +40,10 @@ def create_file(args: str, path: str = "") -> None:
             file.write(f"{line_count} {line_input}\n")
 
 
-arguments = sys.argv
-create_file(arguments, create_folder(arguments))
+def main():
+    arguments = sys.argv
+    create_file(arguments)
+
+
+if __name__ == "__main__":
+    main()
