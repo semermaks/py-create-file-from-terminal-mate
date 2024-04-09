@@ -40,7 +40,7 @@ def create_file(args: str) -> None:
             file.write(f"{line_count} {line_input}\n")
 
 
-def main():
+def main() -> None:
     arguments = sys.argv
     create_file(arguments)
 
